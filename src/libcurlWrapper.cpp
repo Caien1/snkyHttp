@@ -1,39 +1,34 @@
 #include <stdio.h>
 #include <curl/curl.h>
 #include "libcurlWrapper.h"
-typedef CURL RequestHandle;
  
 
 int main(void)
 {
-  RequestHandle *Handle;
-  CurlIntialiseGlobal();
+
+Memory mem={0};
+RequestHandle *Handle;
+HeaderList *list;
+CurlIntialiseGlobal();
+
 
   GetObject Obj;
-  Obj.url="https://google.com/";
-  Obj.redirect=1;
+  Obj.url="https://www.purgomalum.com/service/json?text=this";
+  Obj.redirect=0;
 
-  Handle = RequestHandleInit(Handle);
-  Handle = GetSetter(Handle,&Obj);
 
-  ResponseCode response = curl_easy_perform(Handle);
-
-    if(response != CURLE_OK){
-      fprintf(stderr, "curl_easy_perform() failed: %s\n",
-              curl_easy_strerror(response));
-  }
-  HttpStatusCode statusCode =0;
-  curl_easy_getinfo(Handle,CURLINFO_RESPONSE_CODE,&statusCode);
-  
-  printf("%ln",statusCode);
+Handle = RequestHandleInit(Handle);
+Handle = GetSetter(Handle,&Obj);
+Handle = WriteToMemory(Handle, (void*)&mem);
+VerboseOutput(Handle);
+ResponseCode response = SendRequest(Handle);
 
 
 
+RequestHandleCleaner(Handle);
+CurlDestroyGlobal();
 
-  curl_easy_cleanup(Handle);
+printf("%s", mem.response);
 
-
-  CurlDestroyGlobal();
- 
   return 0;
 }
