@@ -1,3 +1,11 @@
 16-09-2025
 Intialisation Functiontions 
-Made basic getRequest functionalties 
+Made basic getRequest functionalties
+
+17-09-2025
+Made write memory callback so I can use the result it is not written to stdout by default
+Ability to add custom headers headers
+
+
+
+ 
