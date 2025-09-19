@@ -1,10 +1,30 @@
 # A light-weight http request client    
--Idea-
-raylib + libcurl
 
+##  Architecture 
 
-steps 1) make an wrapper for libcurl for all the HTTP requst methods that can be used 
-step  2) check weather it works or not 
-
-start 
-
+                ┌─────────────────────────────┐
+                │             GUI             │
+                │          (Raylib)           │
+                │   - URL input               │
+                │   - Headers editor          │
+                │   - Send button             │
+                │   - Response viewer         │
+                └─────────────┬───────────────┘
+                              │
+                              ▼
+                ┌─────────────────────────────┐
+                │       GUI Error Layer       │
+                │   - Checks inputs           │
+                │   - Validates headers/body  │
+                │   - Passes clean params     │
+                └─────────────┬───────────────┘
+                              │
+                              ▼
+                ┌─────────────────────────────┐
+                │        HTTP Wrapper         │
+                │   - GetSetter/PostSetter    │
+                │   - HeaderSetter            │
+                │   - WriteToMemory           │
+                │   - SendRequest             │
+                └──────────────────────────── ┘
+                              
