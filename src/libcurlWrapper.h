@@ -3,18 +3,25 @@
 #include <cstdlib>
 
 
-
+#ifndef LIBCURL_WRAPPER
+#define  LIBCURL_WRAPPER
 typedef CURL RequestHandle;
 typedef CURLcode ResponseCode;
 typedef long HttpStatusCode;
 typedef curl_slist HeaderList;
-typedef enum{GET,POST,PUT,DELETE}HttpMethod;
+typedef enum{GET,POST,PUT,DEL}HttpMethod;
+
+typedef struct 
+{
+    char* url;
+    HttpStatusCode response_code;
+    double elapsed;
+}RequestInfo;
 
 
-
-typedef struct {
+typedef struct { //standard  thinking of using this instead of instead of seprate GET POST AND other reqs 
     HttpMethod HttpMethod;
-    char *url;
+   const char *url;
     char *body;
     long  redirect;
     char* fields;
@@ -26,32 +33,31 @@ typedef struct{
     char *body;
     long  redirect;
     char* fields;
+
 }PostObject;
 
 typedef struct{
     char *url;
     char *body;
     char *fields;
-}DeleteObject;
-
-
-
+}DeleteReqObject;
 
 typedef struct{
-    char *url;
+    const char *url;
     char *query;
     long  redirect;
-}GetObject;
+}GetReqObject;
 
 typedef struct{
     char* response;
     size_t size;
 }memory,Memory;
 
-//////////////////////////////////////////////////////////////////////////////////////////////
+/*_________________________________FUNCTIONS____________________________________*/
 
-// Curl Specific Initialisers 
-void CurlIntialiseGlobal();
+
+/*_____INITLISERS________*/
+void CurlInitialiseGlobal();
 void CurlDestroyGlobal();
 
 RequestHandle* RequestHandleInit(RequestHandle*);
@@ -59,34 +65,37 @@ void RequestHandleCleaner(RequestHandle*);
 
 void ClearHeaderList(HeaderList *);
 
-//debugging
+/*___________DEBUGGER/ANALYSER____________*/
 void VerboseOutput(RequestHandle*);
+void RequestInformation(RequestInfo *);
+
+
 
     
-//Request Wrappers
-
-RequestHandle* GetSetter(RequestHandle*, GetObject*);
+/*____________REQUEST WRAPPERS_________*/
+RequestHandle* GetSetter(RequestHandle*, GetReqObject*);
 RequestHandle* PostSetter(RequestHandle*, PostObject*);
-RequestHandle* DeleteSetter(RequestHandle*,DeleteObject*);
+RequestHandle* DeleteSetter(RequestHandle*,DeleteReqObject*);
 ResponseCode SendRequest(RequestHandle*);
+
+
+
+/*__________________HEADER SETTERS___________*/
+HeaderList* AddHeader(HeaderList*,const char * );  
 RequestHandle* SetCustomHeaders(RequestHandle*,HeaderList*);
-//HttpHeaderSetters
-HeaderList* AddHeader(HeaderList*,char * );  
 
 
 
 
 
-
-//Todo:Make a function(Write call back)
-//Memory Stuff
+/*_____________MEMORY_WRITE___________*/
 static size_t MemoryCallbackWrite(char *, size_t, size_t, void *);
 RequestHandle* WriteToMemory(RequestHandle* ,void* );
 
-                      
-////////////////////////////////////////////////////////////////////////////////////////////
+#endif                      
+/*_________________________________IMPLEMENTATION_________________*/
 
-void CurlIntialiseGlobal(){
+void CurlInitialiseGlobal(){
     curl_global_init(CURL_GLOBAL_ALL);
 }
 
@@ -94,7 +103,7 @@ void CurlDestroyGlobal(){
     curl_global_cleanup();
 }
 
-RequestHandle* GetSetter(RequestHandle* Handle,GetObject* getHandle){
+RequestHandle* GetSetter(RequestHandle* Handle,GetReqObject* getHandle){
 
     curl_easy_setopt(Handle, CURLOPT_URL, getHandle->url);
     curl_easy_setopt(Handle, CURLOPT_HTTPGET, 1L);
@@ -157,7 +166,7 @@ RequestHandle* WriteToMemory(RequestHandle* Handle,void* WritePtr ){
     return Handle;
 }
 
-HeaderList* AddHeader(HeaderList* headerList, char* header ){
+HeaderList* AddHeader(HeaderList* headerList,const char* header ){
      headerList=curl_slist_append(headerList,header);
      return headerList;
 }  
@@ -174,5 +183,13 @@ void ClearHeaderList(HeaderList * headerList){
 void VerboseOutput(RequestHandle* Handle){
 
     curl_easy_setopt(Handle,CURLOPT_VERBOSE,1L);
+
+}
+
+void RequestInformation(RequestHandle* Handle,RequestInfo *info){
+
+         curl_easy_getinfo(Handle, CURLINFO_RESPONSE_CODE, info->response_code);
+        curl_easy_getinfo(Handle, CURLINFO_TOTAL_TIME, info->elapsed);
+        curl_easy_getinfo(Handle, CURLINFO_EFFECTIVE_URL, info->url);
 
 }
