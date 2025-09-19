@@ -7,5 +7,16 @@ Made write memory callback so I can use the result it is not written to stdout b
 Ability to add custom headers headers
 
 
+18-09-2025
+The headers are working now sees good; 
+There was a bug the HeaderList need to be initilised;
+
+
+19-09-2025
+Added Raylib with raygui 
+refactored names clashing with win_api 
+changed compiler to 
+
+
 
  
