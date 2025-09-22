@@ -15,7 +15,11 @@ There was a bug the HeaderList need to be initilised;
 19-09-2025
 Added Raylib with raygui 
 refactored names clashing with win_api 
-changed compiler to 
+changed compiler to windows-cygwin-gcc
+
+20-09-2025
+Was checking out 
+
 
 
 

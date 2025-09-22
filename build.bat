@@ -1,7 +1,7 @@
 
+@echo off
 REM ADD A BIN DIR BEFORE RUNNING
 
-@echo off
 
 echo Compiling Curl...
 set cc=g++
@@ -22,5 +22,4 @@ set flagui=-I include -L lib -lraylib -lgdi32 -lwinmm -Wall
 %cc% %sourceui% %outputui% %flagui%
 
 echo Done
-pause
 
