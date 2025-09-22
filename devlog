@@ -20,7 +20,10 @@ changed compiler to windows-cygwin-gcc
 20-09-2025
 Was checking out 
 
+22-09-2024
 
+TODO make a file watcher that will make a terminal prompt when files it will be useful in hot reloading and other things 
+or so i beleive 
 
 
  
