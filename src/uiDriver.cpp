@@ -1,5 +1,6 @@
 #include<raylib.h>
 #include<raygui.h>
+#include "uiImpl.h"
 int main(){
 InitWindow(800,800,"Http Status");
 
@@ -11,11 +12,12 @@ Rectangle rect ={0,0,10,10};
     {
         // TODO: Update your variables here
 
+DrawText(TextFormat("Score: %08i"), 400, 400, 50, RED);
+            BeginDrawing();
 
-        BeginDrawing();
-
+            InsideLoop();
+            
             ClearBackground(fav);
-            DrawFPS(400,0);
              
 
 

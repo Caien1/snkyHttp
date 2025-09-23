@@ -26,4 +26,8 @@ TODO make a file watcher that will make a terminal prompt when files it will be 
 or so i beleive 
 
 
+steps -> make a python script that monitors the source folder when the sorce code for dll files is changed recompile 
+
+
+
  
