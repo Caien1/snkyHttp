@@ -1,3 +1,3 @@
 
-g++ .\fileWatcher\fileWatcher.cpp -o .\fileWatcher\a.exe  -lKernel32
-.\fileWatcher\a.exe
+g++ .\fileWatcher\fileWatcher.cpp -o .\bin\fileWatcher.exe  -lKernel32
+.\bin\fileWatcher.exe

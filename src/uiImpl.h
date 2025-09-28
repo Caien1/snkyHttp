@@ -4,7 +4,7 @@ void ToggleFullScreenWindow();
 
 void InsideLoop(){
     
-    DrawFPS(500,500);
+    DrawFPS(501,500);
     
 }
 
