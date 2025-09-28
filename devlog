@@ -32,6 +32,11 @@ steps -> make a python script that monitors the source folder when the sorce cod
 made a little progress
 some full screen stuff
  TODO look for some good fonts etc
- 
+
+
+28-09
+made a small file watcher
+br_filewatcher.bat build and calls filewatcher
+
 
  
