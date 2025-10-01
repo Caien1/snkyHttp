@@ -38,9 +38,9 @@ some full screen stuff
 made a small file watcher
 br_filewatcher.bat build and calls filewatcher
 fixed contributions set to wrong email
-
+1
 //test the contribution problem
-
-
-
- 
+TODO(): Time to implement the UI
+1-10 25
+tried to implement hot reloading :( not that sucessful but hey the filewatcher is working as expected 
+WIll be using raygui for immediate mode graphics 
