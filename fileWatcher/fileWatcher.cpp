@@ -45,7 +45,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
         //RUN THEM BUILD SCRIPTs
         system("pwd");
         system("build.bat");
-       // system("../run.bat");
+       system("run.bat");
     }
 
     CloseHandle(dirHandle);
