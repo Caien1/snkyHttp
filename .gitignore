@@ -2,3 +2,4 @@
 /build
 /fileWatcher/*.exe
 /bin
+include/
