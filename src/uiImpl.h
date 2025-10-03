@@ -1,2 +1,2 @@
-void InsideLoop();
-void ToggleFullScreenWindow();
+__declspec(dllexport) void InsideLoop();
+__declspec(dllexport) void ToggleFullScreenWindow();
