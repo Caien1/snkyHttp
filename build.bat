@@ -17,7 +17,7 @@ set cc=g++
 echo Compiling Raylib...
 set sourceui=.\src\uiDriver.cpp 
 set outputui=-o .\bin\ray.exe
-set flagui=-I include -L lib -lraylib  -lgdi32 -lwinmm -Wall -L./ -lui
+set flagui=-I include -L ./ -lraylib  -lgdi32 -lwinmm -Wall 
 
 %cc% %sourceui% %outputui% %flagui%
 
