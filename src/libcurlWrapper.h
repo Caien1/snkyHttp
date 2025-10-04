@@ -1,10 +1,13 @@
+#pragma once
+
+#ifndef LIBCURL_WRAPPER
+#define  LIBCURL_WRAPPER
+
 #include <curl/curl.h>
 #include <string.h>
 #include <cstdlib>
 
 
-#ifndef LIBCURL_WRAPPER
-#define  LIBCURL_WRAPPER
 typedef CURL RequestHandle;
 typedef CURLcode ResponseCode;
 typedef long HttpStatusCode;

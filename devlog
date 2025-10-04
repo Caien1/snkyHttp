@@ -43,4 +43,20 @@ fixed contributions set to wrong email
 TODO(): Time to implement the UI
 1-10 25
 tried to implement hot reloading :( not that sucessful but hey the filewatcher is working as expected 
-WIll be using raygui for immediate mode graphics 
+WIll be using raygui for immediate mode graphics
+2-10-15
+change of plans for Gui
+I will be using Dear ImGui with some glfw backend 
+Raylib is to complicated for this project i might simply go for a win32 navtive stuff I get annoyed but combo but i dont think this will be the case
+It takes me more time to make simple arch decision than writing the code very annoying at times 
+But I intend to desing in a way that later api's are cleaner to work with 
+I should not break after 6 months hence 
+i think that good architecture is like having good pawn structure in a game of chess. The ideas in the position come more easily to one if structure is good otherwise its a lot of work
+
+05-10-25
+Made a basic ui in raylib 
+now can perform a simple get request
+Might change ui to some backend to something else current ram usage is 51 mb i want it below 10 mb
+the size of exe is 1.6mb but libcurl for now is dyanmically linked add 5 to 6 mbs of that app is roun 7 to 8 mb
+which isnt bad but this could be better if file pilot can be 1.8 mb why cant and take 7 mb of ram when running why cant this stuff be that
+anyways 
