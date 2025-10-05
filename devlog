@@ -60,3 +60,8 @@ Might change ui to some backend to something else current ram usage is 51 mb i w
 the size of exe is 1.6mb but libcurl for now is dyanmically linked add 5 to 6 mbs of that app is roun 7 to 8 mb
 which isnt bad but this could be better if file pilot can be 1.8 mb why cant and take 7 mb of ram when running why cant this stuff be that
 anyways 
+
+05-10-25
+
+Did some Gui Work:
+    
