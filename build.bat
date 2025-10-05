@@ -1,6 +1,6 @@
 
-@REM @echo off
-@REM REM ADD A BIN DIR BEFORE RUNNING
+@echo off
+REM ADD A BIN DIR BEFORE RUNNING
 set cc=g++
 
 @REM echo Compiling Curl...
@@ -17,9 +17,8 @@ set cc=g++
 echo Compiling Raylib...
 set sourceui=.\src\ui.cpp 
 set outputui=-o .\bin\ray.exe
-set flagui=-O2 -I inclide -lraylib -lopengl32 -lgdi32 -luser32 -lkernel32 -lwinmm -Wall -lcurl -Wall -lssl -lcrypto -lz -lws2_32 -lcrypt32 -lwldap32 -DCURL_STATICLIB -mwindows
-set undef=-U SUPPORT_MODULE_AUDIO -U SUPPORT_MODULE_TEXTURES -U SUPPORT_MODULE_MODELS -U SUPPORT_MODULE_SHAPES
-%cc% %sourceui% %outputui% %flagui% %undef%
+set flagui=-O2 -I inclide -lraylib -lopengl32 -lgdi32 -luser32 -lkernel32 -lwinmm -Wall -lcurl -Wall -lssl -lcrypto -lz -lws2_32 -lcrypt32  -DCURL_STATICLIB 
+%cc% %sourceui% %outputui% %flagui%
 
 echo Done
 
